@@ -57,6 +57,92 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun onEqual(view: View){
+        //make sure that the last value entered is a number
+        if(lastNumeric)
+        {
+            var inputValue = inputView?.text.toString()
+            var prefix = ""
+            try {
+                //check if the first value start with negative and remove it
+                //This will be added again later
+                if(inputValue.startsWith("-"))
+                {
+                    //remove the negative sign
+                    prefix= "-"
+                    inputValue = inputValue.substring(1)
+                }
+                if(inputValue.contains("-"))
+                {
+                    //splitting the string will return an array
+                    val splitValue = inputValue.split("-")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    //check whether the value was initially negative
+                    if(prefix.isNotEmpty())
+                    {
+                        one = prefix + one
+                    }
+
+                    inputView?.text = "${one.toDouble() - two.toDouble()}"
+                }
+                else if(inputValue.contains("+"))
+                {
+                    //splitting the string will return an array
+                    val splitValue = inputValue.split("+")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    //check whether the value was initially negative
+                    if(prefix.isNotEmpty())
+                    {
+                        one = prefix + one
+                    }
+
+                    inputView?.text = "${one.toDouble() + two.toDouble()}"
+                }
+                else if(inputValue.contains("*"))
+                {
+                    //splitting the string will return an array
+                    val splitValue = inputValue.split("*")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    //check whether the value was initially negative
+                    if(prefix.isNotEmpty())
+                    {
+                        one = prefix + one
+                    }
+
+                    inputView?.text = "${one.toDouble() * two.toDouble()}"
+                }
+                else if(inputValue.contains("/"))
+                {
+                    //splitting the string will return an array
+                    val splitValue = inputValue.split("/")
+                    var one = splitValue[0]
+                    var two = splitValue[1]
+
+                    //check whether the value was initially negative
+                    if(prefix.isNotEmpty())
+                    {
+                        one = prefix + one
+                    }
+
+                    inputView?.text = "${one.toDouble() / two.toDouble()}"
+                }
+
+
+
+
+
+            }catch (e: java.lang.ArithmeticException)
+            {
+                e.printStackTrace()
+            }
+        }
+    }
     //Main purpose is to see if there is an operator used within the string
     //With the first value being the exception
     private fun isOperatorAdded(value: String): Boolean{

@@ -223,7 +223,7 @@
             android:layout_weight="1"
             android:layout_margin="2dp"
             android:text="="
-            android:onClick="onButtonClick"
+            android:onClick="onEqual"
             android:backgroundTint="@color/purple_200"
             />
 
